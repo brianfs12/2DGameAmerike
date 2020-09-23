@@ -23,7 +23,7 @@ public class Camera_Transition : MonoBehaviour
     void Update()
     {
         //Activar cambio si no esta en transición----------------------
-        if(Input.GetKeyDown(KeyCode.R) && !InTransition)
+        if (Input.GetKeyDown(KeyCode.R) && !InTransition)
         {
             Transition();
         }
@@ -33,7 +33,7 @@ public class Camera_Transition : MonoBehaviour
     //Función para el movimiento y rotación de la cámara
     public void Transition()
     {
-        if(perspective) //Cambiar a "2D"
+        if (perspective) //Cambiar a "2D"
         {
             InTransition = true;
             perspective = false;
@@ -55,7 +55,7 @@ public class Camera_Transition : MonoBehaviour
     void ChangeBool()
     {
         InTransition = false;
-        if(!perspective)
+        if (!perspective)
         {
             cam.orthographic = true; //Cambiar cámara a proyección ortografica
             ortho = true;
