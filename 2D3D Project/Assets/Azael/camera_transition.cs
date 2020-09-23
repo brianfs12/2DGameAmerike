@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camera_transition : MonoBehaviour
+public class Camera_Transition : MonoBehaviour
 {
     //Mecánica de girar la camara para cambiar de perspectiva
 
-    public static bool perspective = true; //Booleano para saber si la cámara esta en 3D o 2D
+    public static bool ortho = false; //Booleano para saber si la camara esta en modo ortografico
+    bool perspective = true; //Booleano para saber si la cámara esta en 3D o 2D
     bool InTransition = false; //Booleano para saber si la cámara esta en transición
     Camera cam; //Referencia a la cámara
     public GameObject pos3Dcamera;
@@ -21,7 +22,7 @@ public class camera_transition : MonoBehaviour
 
     void Update()
     {
-        //Activar cambio si no esta en transición-------------------
+        //Activar cambio si no esta en transición----------------------
         if(Input.GetKeyDown(KeyCode.R) && !InTransition)
         {
             Transition();
@@ -41,10 +42,10 @@ public class camera_transition : MonoBehaviour
         }
         else //Cambiar a "3D"
         {
-            cam.transform.SetParent(gameObject.transform);
             InTransition = true;
             perspective = true;
             cam.orthographic = false;
+            ortho = false;
             LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
             LeanTween.move(cam.gameObject, pos3Dcamera.transform.position, transitionTime);
         }
@@ -56,8 +57,8 @@ public class camera_transition : MonoBehaviour
         InTransition = false;
         if(!perspective)
         {
-            cam.orthographic = true;
-            cam.transform.SetParent(null);
+            cam.orthographic = true; //Cambiar cámara a proyección ortografica
+            ortho = true;
         }
     }
 }
