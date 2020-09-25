@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Camera_Movement : MonoBehaviour
 {
+    //Camara que sigue al jugador dependiendo de la prespectiva 3D o 2D
+
     Transform playerPos; //Referencia a Transform del jugador 
     public float range2Dmovement; //Rango de tolerancia del movimiento de la camara en 2D
 

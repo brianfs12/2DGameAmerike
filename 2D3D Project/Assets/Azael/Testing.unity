@@ -312,6 +312,7 @@ MonoBehaviour:
   pos3Dcamera: {fileID: 1211250003}
   pos2DCamera: {fileID: 1788751297}
   transitionTime: 0.25
+  returnTimer: 3
 --- !u!1 &1211250003
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +324,7 @@ GameObject:
   - component: {fileID: 1211250004}
   m_Layer: 0
   m_Name: 3DCamPosition
-  m_TagString: Untagged
+  m_TagString: 3DCamPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,7 +446,7 @@ GameObject:
   - component: {fileID: 1788751298}
   m_Layer: 0
   m_Name: 2DCamPosition
-  m_TagString: Untagged
+  m_TagString: 2DCamPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
