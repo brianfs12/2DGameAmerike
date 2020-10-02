@@ -6,6 +6,7 @@ TagManager:
   tags:
   - 2DCamPosition
   - 3DCamPosition
+  - Enemy
   layers:
   - Default
   - TransparentFX
