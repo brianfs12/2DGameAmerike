@@ -30,8 +30,17 @@ public class Movement : MonoBehaviour
         //Checks if the character is grounded.
         isGrounded = Physics.CheckSphere(groundChecker.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
         movementInput = Vector3.zero;
-        movementInput.x = Input.GetAxisRaw("Horizontal");
-        movementInput.z = Input.GetAxisRaw("Vertical");
+        //Cambiar controles segun la perspectiva de la camara
+        if(Camera_Transition.ortho)
+        {
+            movementInput.z = Input.GetAxisRaw("Horizontal");
+        }
+        else
+        {
+            movementInput.x = Input.GetAxisRaw("Horizontal");
+            movementInput.z = Input.GetAxisRaw("Vertical");
+        }
+        
         if (movementInput != Vector3.zero)
         {
             transform.forward = movementInput;

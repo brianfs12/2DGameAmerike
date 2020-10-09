@@ -6,7 +6,7 @@ public class Enemy1Controller : MonoBehaviour
 {
     public int health = 1;
     public int damageOfEnemy = 1;
-    public Transform playerLocation;
+    Transform playerLocation;
     public Vector3[] locations;
     public float speed;
     public int chosen;
@@ -18,12 +18,11 @@ public class Enemy1Controller : MonoBehaviour
 
     float targetRange = 5f;
 
-
-
     void Start()
     {
 
         playerDetected = false;
+        playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
