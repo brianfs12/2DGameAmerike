@@ -25,25 +25,25 @@ public class Camera_Transition : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void LateUpdate()
     {
-        //Activar cambio si no esta en transición----------------------
-        if (Input.GetKeyDown(KeyCode.R) && !InTransition)
-        {
-            Transition();
-        }
-        //-------------------------------------------------------------
-
         if (InTransition)
         {
-            player.isKinematic = true;
+            player.isKinematic = true; //Volver kinematic al jugador y volver su velocidad 0 para que no se mueva mientras esta girando la cámara
             player.gameObject.GetComponent<Movement>().movementSpeed = 0;
         }
         else
         {
-            player.isKinematic = false;
+            player.isKinematic = false; //Reactivar el movimineto del jugador
             player.gameObject.GetComponent<Movement>().movementSpeed = 7.8f;
         }
+
+        //Activar cambio si no esta en transición----------------------
+        if(Input.GetKeyDown(KeyCode.R) && !InTransition)
+        {
+            Transition();
+        }
+        //-------------------------------------------------------------
     }
 
     //Función para el movimiento y rotación de la cámara
@@ -62,7 +62,7 @@ public class Camera_Transition : MonoBehaviour
             InTransition = true;
             perspective = true;
             cam.orthographic = false;
-            StopAllCoroutines();
+            //StopAllCoroutines();
             LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
             LeanTween.move(cam.gameObject, pos3DCamera.transform.position, transitionTime);
         }
@@ -76,7 +76,7 @@ public class Camera_Transition : MonoBehaviour
         {
             cam.orthographic = true; //Cambiar cámara a proyección ortografica
             ortho = true;
-            StartCoroutine(Counter());
+            //StartCoroutine(Counter());
         }
     }
 
@@ -84,6 +84,7 @@ public class Camera_Transition : MonoBehaviour
     IEnumerator Counter()
     {
         yield return new WaitForSeconds(returnTimer);
+
         Transition();
     }
 }

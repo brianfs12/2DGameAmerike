@@ -15,16 +15,11 @@ public class MoveObjects2D : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
-        {
-            playerPosition = gameObject.transform.position; //Guardar la posicion actual del jugador
-        }
-
         if (Camera_Transition.ortho)
         {
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
             {
-                transform.position = new Vector3(4.0f, playerPosition.y, playerPosition.z); //Mover al jugador
+                transform.position = new Vector3(4.0f, transform.position.y, transform.position.z); //Mover al jugador
             }
             else
             {
@@ -42,7 +37,7 @@ public class MoveObjects2D : MonoBehaviour
             {
                 if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
                 {
-                    transform.position = new Vector3(posX, playerPosition.y, playerPosition.z); //Mover al jugador
+                    transform.position = new Vector3(posX, transform.position.y, transform.position.z); //Mover al jugador
                 }
                 else
                 {
