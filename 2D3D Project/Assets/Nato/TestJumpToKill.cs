@@ -24,7 +24,7 @@ public class TestJumpToKill : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy1Controller>().TakeDamage(damageOfPlayer);
+            other.GetComponent<EnemyBase>().TakeDamage(damageOfPlayer);
         }
     }
 
