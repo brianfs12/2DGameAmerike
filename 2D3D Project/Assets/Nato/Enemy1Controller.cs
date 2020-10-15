@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy1Controller : MonoBehaviour
 {
-    public int health = 1;
-    public int damageOfEnemy = 1;
     Transform playerLocation;
     public Vector3[] locations;
     public float speed;
@@ -13,14 +11,20 @@ public class Enemy1Controller : MonoBehaviour
     public int plusminus;
     public bool playerDetected;
 
-    public bool vulnerable = true;
-    WaitForSeconds invulneravility = new WaitForSeconds(1f);
-
     float targetRange = 5f;
+
+    private EnemyBase enemyBase;
+
+    private void Awake()
+    {
+
+    }
 
     void Start()
     {
-
+        enemyBase = this.GetComponent<EnemyBase>();
+        enemyBase.enemyType = EnemyController.EnemyType.ENEMY1;
+        enemyBase.currentHealth = enemyBase.maxHealth;
         playerDetected = false;
         playerLocation = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -61,7 +65,7 @@ public class Enemy1Controller : MonoBehaviour
 
     void Controller()
     {
-        if (health > 0)
+        if (enemyBase.currentHealth > 0)
         {
             MovementController();
         }
@@ -126,23 +130,9 @@ public class Enemy1Controller : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Player"))
         {
-            collision.collider.gameObject.GetComponent<TestJumpToKill>().TakeDamage(damageOfEnemy);
+            collision.collider.gameObject.GetComponent<TestJumpToKill>().TakeDamage(enemyBase.damageOfEnemy);
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        if (vulnerable)
-        {
-            StartCoroutine(GetDamage(damage));
-        }
-    }
 
-    IEnumerator GetDamage(int damage)
-    {
-        health -= damage;
-        vulnerable = false;
-        yield return invulneravility;
-        vulnerable = true;
-    }
 }
