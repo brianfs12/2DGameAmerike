@@ -217,10 +217,12 @@ MonoBehaviour:
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   attackDamage: 1
-  maxHealth: 3
-  currentHealth: 0
+  controller: {fileID: 0}
+  Health: 3
+  TimeOfInvulnerability: 1
+  TimeUntilNextAttack: 1
 --- !u!1 &2712427338213768815
 GameObject:
   m_ObjectHideFlags: 0

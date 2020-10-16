@@ -7,6 +7,7 @@ TagManager:
   - 2DCamPosition
   - 3DCamPosition
   - Enemy
+  - AudioManager
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Enemy
   - 
   - 
   - 

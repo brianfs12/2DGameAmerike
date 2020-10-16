@@ -18,7 +18,8 @@ public class EnemyBase : MonoBehaviour
         currentHealth = maxHealth;
         controller.SetDamage(enemyType, damageOfEnemy);
     }
-    // Start is called before the first frame update
+    
+
     public void TakeDamage(int damage)
     {
         if (vulnerable)
