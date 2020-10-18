@@ -20,7 +20,7 @@ public class BetterJumping : MonoBehaviour
     //We handle player input in Update
     void Update()
     {
-        jumpPressed = Input.GetButton("Jump");
+        jumpPressed = Input.GetButton("Button A");
     }
 
     //And we handle everything physics related in this FixedUpdate

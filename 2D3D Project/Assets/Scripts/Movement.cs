@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
         {
             transform.forward = movementInput;
         }
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Button A") && isGrounded)
         {
             Jump();
         }
