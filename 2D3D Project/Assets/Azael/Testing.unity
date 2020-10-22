@@ -1139,7 +1139,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01feb4837e26d224e992764b1545fb54, type: 2}
     - target: {fileID: 2186536929703748649, guid: f8bc9602c8f685a4d8f5d4de6798be4a, type: 3}
       propertyPath: jumpVelocity
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 2186536929703748650, guid: f8bc9602c8f685a4d8f5d4de6798be4a, type: 3}
       propertyPath: m_Name
@@ -2506,21 +2506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf37d6745fc0934b8b3a4b35f0e30e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1361636078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361636067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03722d15e9cee5c40b1578c423f998a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
-  vulnerable: 1
-  damageOfPlayer: 1
 --- !u!1 &1392978502
 GameObject:
   m_ObjectHideFlags: 0

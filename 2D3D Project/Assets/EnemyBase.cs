@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     public EnemyController controller;
-    public bool vulnerable = true;
-    WaitForSeconds invulneravility = new WaitForSeconds(1f);
     public int maxHealth;
     public int currentHealth;
     public int damageOfEnemy;
@@ -18,21 +16,19 @@ public class EnemyBase : MonoBehaviour
         currentHealth = maxHealth;
         controller.SetDamage(enemyType, damageOfEnemy);
     }
-    
 
-    public void TakeDamage(int damage)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (vulnerable)
+        if(collision.gameObject.CompareTag("Player") && collision.GetContact(0).normal.y < 0)
         {
-            StartCoroutine(GetDamage(damage));
+            print(collision.contacts[0].normal.y);
+            TakeDamage(1);
+            collision.rigidbody.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
         }
     }
 
-    IEnumerator GetDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        vulnerable = false;
-        yield return invulneravility;
-        vulnerable = true;
     }
 }

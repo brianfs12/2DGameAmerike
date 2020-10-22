@@ -13,6 +13,8 @@ public enum Sounds
 
 public class AudioManager : MonoBehaviour
 {
+    static AudioManager instance;
+
     [Header("SFX")]
     public AudioClip jump;
     public AudioClip death;
@@ -27,7 +29,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
