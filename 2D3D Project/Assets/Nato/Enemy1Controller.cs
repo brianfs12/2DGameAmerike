@@ -78,7 +78,6 @@ public class Enemy1Controller : MonoBehaviour
     void Die()
     {
         //Se necesita pulir codigo para animacion antes de morir
-        //Ah bueno
         Destroy(this.gameObject);
     }
 
@@ -126,5 +125,14 @@ public class Enemy1Controller : MonoBehaviour
             //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0.25f);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag("Player"))
+        {
+            collision.collider.gameObject.GetComponent<TestJumpToKill>().TakeDamage(enemyBase.damageOfEnemy);
+        }
+    }
+
 
 }

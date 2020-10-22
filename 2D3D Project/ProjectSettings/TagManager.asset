@@ -8,7 +8,6 @@ TagManager:
   - 3DCamPosition
   - Enemy
   - AudioManager
-  - GM
   layers:
   - Default
   - TransparentFX

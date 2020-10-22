@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     public EnemyController controller;
+    public bool vulnerable = true;
+    WaitForSeconds invulneravility = new WaitForSeconds(1f);
     public int maxHealth;
     public int currentHealth;
     public int damageOfEnemy;
@@ -20,6 +22,17 @@ public class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (vulnerable)
+        {
+            StartCoroutine(GetDamage(damage));
+        }
+    }
+
+    IEnumerator GetDamage(int damage)
+    {
         currentHealth -= damage;
+        vulnerable = false;
+        yield return invulneravility;
+        vulnerable = true;
     }
 }
