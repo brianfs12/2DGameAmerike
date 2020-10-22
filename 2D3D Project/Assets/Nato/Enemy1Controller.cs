@@ -53,7 +53,7 @@ public class Enemy1Controller : MonoBehaviour
 
     void Findtarget()
     {
-        if(Vector3.Distance(transform.position, playerLocation.position) < targetRange)
+        if (Vector3.Distance(transform.position, playerLocation.position) < targetRange)
         {
             playerDetected = true;
         }
@@ -77,6 +77,16 @@ public class Enemy1Controller : MonoBehaviour
 
     void Die()
     {
+        int probDrop = Random.Range(1, 100);
+        if(probDrop >= 50)
+        {
+            Debug.Log("Instancia un drop");
+        } else
+        {
+            Debug.Log("No instancia un drop");
+        }
+
+
         //Se necesita pulir codigo para animacion antes de morir
         Destroy(this.gameObject);
     }
@@ -96,11 +106,15 @@ public class Enemy1Controller : MonoBehaviour
 
     void FollowPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, playerLocation.position, speed  * Time.deltaTime);
+        Vector3 playerLocationCorrected = new Vector3(playerLocation.position.x, this.transform.position.y, playerLocation.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, playerLocationCorrected, speed * Time.deltaTime);
     }
 
     void MoveLocations()
     {
+        Vector3 locationsCorrected = new Vector3(locations[chosen].x, this.transform.position.y, locations[chosen].z);
+        locations[chosen] = locationsCorrected;
+
         transform.position = Vector3.MoveTowards(transform.position, locations[chosen], speed * Time.deltaTime);
         Vector3 position = gameObject.transform.position;
         if (position == locations[chosen])
