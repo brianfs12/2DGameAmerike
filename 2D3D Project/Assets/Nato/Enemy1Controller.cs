@@ -10,6 +10,7 @@ public class Enemy1Controller : MonoBehaviour
     public int chosen;
     public int plusminus;
     public bool playerDetected;
+    public GameObject[] drops;
 
     float targetRange = 5f;
 
@@ -34,22 +35,7 @@ public class Enemy1Controller : MonoBehaviour
         Controller();
     }
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) 
-        {
-            playerDetected = true;
-            playerLocation = other.transform;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            playerDetected = false;
-        }
-    }*/
+    
 
     void Findtarget()
     {
@@ -81,6 +67,9 @@ public class Enemy1Controller : MonoBehaviour
         if(probDrop >= 50)
         {
             Debug.Log("Instancia un drop");
+            probDrop = Random.Range(0, drops.Length);
+            Debug.Log(probDrop);
+            Instantiate(drops[probDrop], this.gameObject.transform.position, Quaternion.identity);
         } else
         {
             Debug.Log("No instancia un drop");

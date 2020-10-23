@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
                 _maxHealth = 3;
                 break;
             case EnemyType.ENEMY3:
-                _maxHealth = 3;
+                _maxHealth = 2;
                 break;
         }
         return _maxHealth;
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
                 _Damage = 1;
                 break;
             case EnemyType.ENEMY3:
-                _Damage = 1;
+                _Damage = 0;
                 break;
         }
     }
