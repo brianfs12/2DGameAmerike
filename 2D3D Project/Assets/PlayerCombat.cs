@@ -31,7 +31,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetButtonDown("Attack") || Input.GetKeyDown(KeyCode.L)) && canAttack)
+        if ((Input.GetButtonDown("Button X") || Input.GetKeyDown(KeyCode.L)) && canAttack)
         {
             Attack();
             audioManager.playSound(Sounds.attack);
@@ -46,10 +46,12 @@ public class PlayerCombat : MonoBehaviour
             {
                 rigi.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
                 collision.gameObject.GetComponent<EnemyBase>().TakeDamage(1);
+                collision.gameObject.GetComponent<Enemy1Controller>().Stunned();
             }
             else
             {
                 takeDamage(collision.GetContact(0).normal);
+                collision.gameObject.GetComponent<Enemy1Controller>().Stunned();
             }
         }
     }
@@ -65,6 +67,7 @@ public class PlayerCombat : MonoBehaviour
         {
             enemy.GetComponent<EnemyBase>().TakeDamage(attackDamage); //Hacer daño al enemigo
             enemy.GetComponent<EnemyBase>().Empujar(transform.position); //Empujar al enemigo hacia atras
+            enemy.GetComponent<Enemy1Controller>().Stunned();
         }
         StartCoroutine(waitToAttack());
     }

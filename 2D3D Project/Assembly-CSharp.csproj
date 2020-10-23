@@ -60,9 +60,12 @@
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTSeq.cs" />
     <Compile Include="Assets\Nato\TestJumpToKill.cs" />
+    <Compile Include="Assets\Nato\Enemy3Controller.cs" />
     <Compile Include="Assets\Azael\LeanTween\LeanTween.cs" />
     <Compile Include="Assets\Azael\Scripts\MoveObjects2D.cs" />
+    <Compile Include="Assets\Nato\Drops\Drops.cs" />
     <Compile Include="Assets\Azael\Scripts\Camera_Transition.cs" />
+    <Compile Include="Assets\Nato\ObjectManager.cs" />
     <Compile Include="Assets\Checkpoint.cs" />
     <Compile Include="Assets\Nato\Enemy1Controller.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
@@ -74,9 +77,7 @@
     <Compile Include="Assets\Azael\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescrOptional.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
-    <Compile Include="Assets\Nato\ObjectManager.cs" />
-    <Compile Include="Assets\Nato\Drops\Drops.cs" />
-    <Compile Include="Assets\Nato\Enemy3Controller.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

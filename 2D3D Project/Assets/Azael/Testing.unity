@@ -2975,7 +2975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979421300301159377, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8979421300301159386, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3063,6 +3063,10 @@ PrefabInstance:
       objectReference: {fileID: 2774583429551000401, guid: 0b1596cbf7205684399643a8187865bd, type: 3}
     - target: {fileID: 8979421300301159390, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
       propertyPath: playerDetected
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979421300301159390, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
+      propertyPath: stun
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4160,6 +4164,10 @@ PrefabInstance:
     - target: {fileID: 1546809591804843269, guid: 5a2504987e4b0b04faec7c21270f5e76, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546809591804843269, guid: 5a2504987e4b0b04faec7c21270f5e76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1546809591804843278, guid: 5a2504987e4b0b04faec7c21270f5e76, type: 3}
       propertyPath: m_LocalPosition.x
