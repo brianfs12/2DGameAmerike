@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    Vector3 aplastar = new Vector3(0,-1,0);
     private Rigidbody rigi;
     public Animator animator;
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 1f;
     public LayerMask enemyLayers;
     public int attackDamage = 1;
     public EnemyController controller;
@@ -39,15 +40,17 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && !invulnerable && collision.GetContact(0).normal.y > 0)
+        if (collision.gameObject.CompareTag("Enemy") && !invulnerable)
         {
-            rigi.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
-            collision.gameObject.GetComponent<EnemyBase>().TakeDamage(1);
-            //Aun no funciona bien
-        }
-        if (collision.gameObject.CompareTag("Enemy") && !invulnerable && collision.GetContact(0).normal.y <= 0)
-        {        
-            takeDamage(collision.GetContact(0).normal);
+            if(Physics.OverlapSphere(aplastar + transform.position, 0.2f, enemyLayers).Length > 0)
+            {
+                rigi.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
+                collision.gameObject.GetComponent<EnemyBase>().TakeDamage(1);
+            }
+            else
+            {
+                takeDamage(collision.GetContact(0).normal);
+            }
         }
     }
 
@@ -60,7 +63,8 @@ public class PlayerCombat : MonoBehaviour
         ///Deal damage
         foreach(Collider enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyBase>().TakeDamage(attackDamage);
+            enemy.GetComponent<EnemyBase>().TakeDamage(attackDamage); //Hacer daño al enemigo
+            enemy.GetComponent<EnemyBase>().Empujar(transform.position); //Empujar al enemigo hacia atras
         }
         StartCoroutine(waitToAttack());
     }
@@ -96,6 +100,7 @@ public class PlayerCombat : MonoBehaviour
             return;
         }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(aplastar + transform.position, 0.2f);
     }
 
 

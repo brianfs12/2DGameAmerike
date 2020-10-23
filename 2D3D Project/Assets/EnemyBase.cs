@@ -19,9 +19,16 @@ public class EnemyBase : MonoBehaviour
         rigi = GetComponent<Rigidbody>();
     }
 
-
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+    }
+
+    public void Empujar(Vector3 PlayerPos)
+    {
+        Vector3 dir = transform.position - PlayerPos;
+        dir.Normalize();
+        rigi.AddForce(dir * 5f, ForceMode.Impulse);
+        rigi.AddForce(Vector3.up * 5f, ForceMode.Impulse);
     }
 }
