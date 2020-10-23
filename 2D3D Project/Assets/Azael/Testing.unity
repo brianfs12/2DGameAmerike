@@ -3008,6 +3008,10 @@ PrefabInstance:
       propertyPath: locations.Array.data[0].z
       value: -17.84
       objectReference: {fileID: 0}
+    - target: {fileID: 8979421300301159390, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
 --- !u!1 &1666537847

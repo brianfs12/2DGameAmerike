@@ -139,4 +139,19 @@ public class Enemy1Controller : MonoBehaviour
             //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0.25f);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            speed = 0.0f;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            speed = 2.0f;
+        }
+    }
 }

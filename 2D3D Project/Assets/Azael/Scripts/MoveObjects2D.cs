@@ -27,7 +27,7 @@ public class MoveObjects2D : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if ((Input.GetButtonDown("ChangeCamera") || Input.GetKeyDown(KeyCode.R)))
         {
             if (!Camera_Transition.ortho)
             {

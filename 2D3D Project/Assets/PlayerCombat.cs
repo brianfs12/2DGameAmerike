@@ -30,16 +30,24 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L) && canAttack)
+        if ((Input.GetButtonDown("Attack") || Input.GetKeyDown(KeyCode.L)) && canAttack)
         {
             Attack();
             audioManager.playSound(Sounds.attack);
         }
+    }
 
-        //Prueba para recivir daño
-        if(Input.GetKeyDown(KeyCode.P) && !invulnerable)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && !invulnerable && collision.GetContact(0).normal.y > 0)
         {
-            takeDamage();
+            rigi.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
+            collision.gameObject.GetComponent<EnemyBase>().TakeDamage(1);
+            //Aun no funciona bien
+        }
+        if (collision.gameObject.CompareTag("Enemy") && !invulnerable && collision.GetContact(0).normal.y <= 0)
+        {        
+            takeDamage(collision.GetContact(0).normal);
         }
     }
 
@@ -53,15 +61,14 @@ public class PlayerCombat : MonoBehaviour
         foreach(Collider enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyBase>().TakeDamage(attackDamage);
-            Debug.Log("golpeado" + enemy.name);
         }
         StartCoroutine(waitToAttack());
     }
 
-    public void takeDamage()
+    public void takeDamage(Vector3 _direction)
     {
         Health -= 1;
-        rigi.AddRelativeForce(Vector3.back * 10.0f, ForceMode.Impulse); //Impulsar al jugador hacia atras cuando recibe daño
+        rigi.AddForce(_direction * 10.0f, ForceMode.Impulse); //Impulsar al jugador hacia atras cuando recibe daño
         rigi.AddRelativeForce(Vector3.up * 10.0f, ForceMode.Impulse);
         StartCoroutine(waitToTakeDamage());
     }

@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public int damageOfEnemy;
+    public Rigidbody rigi;
     public EnemyController.EnemyType enemyType;
 
     public void Start()
@@ -15,17 +16,9 @@ public class EnemyBase : MonoBehaviour
         maxHealth = controller.SetHealth(enemyType);
         currentHealth = maxHealth;
         controller.SetDamage(enemyType, damageOfEnemy);
+        rigi = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player") && collision.GetContact(0).normal.y < 0)
-        {
-            print(collision.contacts[0].normal.y);
-            TakeDamage(1);
-            collision.rigidbody.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
-        }
-    }
 
     public void TakeDamage(int damage)
     {

@@ -39,7 +39,7 @@ public class Camera_Transition : MonoBehaviour
         }
 
         //Activar cambio si no esta en transición----------------------
-        if(Input.GetKeyDown(KeyCode.R) && !InTransition)
+        if((Input.GetButtonDown("ChangeCamera") || Input.GetKeyDown(KeyCode.R)) && !InTransition)
         {
             Transition();
         }
