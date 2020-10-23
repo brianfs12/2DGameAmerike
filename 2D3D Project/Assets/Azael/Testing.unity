@@ -637,51 +637,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &242741557
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 242741559}
-  - component: {fileID: 242741558}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: GM
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &242741558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242741557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee1eeb849992bf049a0d28766d5fc812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastCheckpointPos: {x: 0, y: 2, z: -15}
-  isPaused: 0
---- !u!4 &242741559
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242741557}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45848846, y: 2.7447221, z: -13.262856}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 41
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &246185377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,7 +2975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979421300301159377, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8979421300301159386, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3108,10 +3063,6 @@ PrefabInstance:
       objectReference: {fileID: 2774583429551000401, guid: 0b1596cbf7205684399643a8187865bd, type: 3}
     - target: {fileID: 8979421300301159390, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
       propertyPath: playerDetected
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8979421300301159390, guid: 049bcba787a10c44697a3be1b297b80f, type: 3}
-      propertyPath: stun
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4209,10 +4160,6 @@ PrefabInstance:
     - target: {fileID: 1546809591804843269, guid: 5a2504987e4b0b04faec7c21270f5e76, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 1546809591804843269, guid: 5a2504987e4b0b04faec7c21270f5e76, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1546809591804843278, guid: 5a2504987e4b0b04faec7c21270f5e76, type: 3}
       propertyPath: m_LocalPosition.x

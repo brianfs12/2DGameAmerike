@@ -18,11 +18,14 @@ public class Movement : MonoBehaviour
     private Transform groundChecker;
     private Vector3 movementInput;
 
+    private AudioManager audioManager;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         //The first child should always be an empty object. We'll use this to check if the player is touching the ground.
         groundChecker = transform.GetChild(0);
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -45,9 +48,11 @@ public class Movement : MonoBehaviour
         {
             transform.forward = movementInput;
         }
-        if (Input.GetButtonDown("Button A") && isGrounded)
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
+            audioManager.playSound(Sounds.jump);
         }
     }
 

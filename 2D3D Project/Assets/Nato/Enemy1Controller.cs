@@ -11,10 +11,8 @@ public class Enemy1Controller : MonoBehaviour
     public int plusminus;
     public bool playerDetected;
     public GameObject[] drops;
-    public float stun;
 
     float targetRange = 5f;
-    float recurrentSpeed;
 
     private EnemyBase enemyBase;
 
@@ -25,7 +23,6 @@ public class Enemy1Controller : MonoBehaviour
 
     void Start()
     {
-        recurrentSpeed = speed;
         enemyBase = this.GetComponent<EnemyBase>();
         enemyBase.enemyType = EnemyController.EnemyType.ENEMY1;
         enemyBase.currentHealth = enemyBase.maxHealth;
@@ -131,18 +128,19 @@ public class Enemy1Controller : MonoBehaviour
             //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 0.25f);
         }
     }
-
-    public void Stunned()
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Entro en Stunned");
-        speed = 0;
-        StartCoroutine(MoveAgain());
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            speed = 0.0f;
+        }
     }
 
-    IEnumerator MoveAgain()
+    private void OnCollisionExit(Collision collision)
     {
-        yield return new WaitForSeconds(stun);
-        speed = recurrentSpeed;
-        Debug.Log("Entro en MoveAgain");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            speed = 2.0f;
+        }
     }
 }
