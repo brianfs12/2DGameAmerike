@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     [Range(1, 20)]
     public float movementSpeed;
 
+    [Range(1, 20)]
+    public float movementSpeedLimit;
+
     public float GroundDistance = 0.2f;
     public LayerMask Ground;
 
@@ -18,11 +21,14 @@ public class Movement : MonoBehaviour
     private Transform groundChecker;
     private Vector3 movementInput;
 
+    float movementSpeedSaved;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         //The first child should always be an empty object. We'll use this to check if the player is touching the ground.
         groundChecker = transform.GetChild(0);
+        movementSpeedSaved = movementSpeed;
     }
 
     private void Update()
@@ -49,12 +55,23 @@ public class Movement : MonoBehaviour
         {
             Jump();
         }
+        if((Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Button X")) && (movementInput.x != 0.0f || movementInput.z != 0.0f))
+        {
+            if(movementSpeed < movementSpeedLimit)
+            {
+                movementSpeed += 0.1f;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetButtonUp("Button X"))
+        {
+            movementSpeed = movementSpeedSaved;
+        }
     }
 
     void FixedUpdate()
     {
         //ClampMagnitude clamps the magnitude of the vector so that diagonal movement won't be faster than horizontal or vertical movement.
-        rb.MovePosition(rb.position + Vector3.ClampMagnitude(movementInput * movementSpeed, 6f) * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + Vector3.ClampMagnitude(movementInput * movementSpeed, movementSpeedLimit) * Time.fixedDeltaTime);
     }
 
     void Jump()

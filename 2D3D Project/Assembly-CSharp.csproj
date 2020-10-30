@@ -55,6 +55,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Azael\Scripts\Camera_Translucid.cs" />
     <Compile Include="Assets\EnemyBase.cs" />
     <Compile Include="Assets\Azael\Scripts\Camera_Movement.cs" />
     <Compile Include="Assets\GameManager.cs" />
@@ -78,7 +79,7 @@
     <Compile Include="Assets\Azael\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescrOptional.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
-    <Compile Include="Assets\Azael\Scripts\Camera_Translucid.cs" />
+    <Compile Include="Assets\Brick.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
