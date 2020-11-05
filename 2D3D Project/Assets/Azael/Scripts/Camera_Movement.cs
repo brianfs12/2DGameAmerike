@@ -31,6 +31,14 @@ public class Camera_Movement : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, playerPos.position.z + range2Dmovement);
             }
+            if (playerPos.position.z > transform.position.y + range2Dmovement)
+            {
+                transform.position = new Vector3(transform.position.x, playerPos.position.y - range2Dmovement, transform.position.z);
+            }
+            else if (playerPos.position.z < transform.position.y - range2Dmovement)
+            {
+                transform.position = new Vector3(transform.position.x, playerPos.position.y + range2Dmovement, transform.position.z);
+            }
         }
     }
 }

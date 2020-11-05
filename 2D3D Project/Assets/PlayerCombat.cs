@@ -25,7 +25,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
-        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        //audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         rigi = GetComponent<Rigidbody>();
     }
 
@@ -34,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
         if ((Input.GetButtonDown("Button X") || Input.GetKeyDown(KeyCode.L)) && canAttack)
         {
             Attack();
-            audioManager.playSound(Sounds.attack);
+            //audioManager.playSound(Sounds.attack);
         }
     }
 
