@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MoveObjects2D : MonoBehaviour
 {
-    Vector3 originalPosition;//Posicion de objetos estaticos
-    Vector3 playerPosition;//Posicion del jugador
-    float posX;
+    //Mover los objetos cuando la camara cambia a 2D
+
+    Vector3 originalPosition;//Para guardar la posicion 3D de objetos estaticos
+    float posX;//Para guardar la posicion en X del jugador
 
     void Start()
     {

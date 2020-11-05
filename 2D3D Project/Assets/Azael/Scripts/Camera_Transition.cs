@@ -16,28 +16,19 @@ public class Camera_Transition : MonoBehaviour
 
     public float transitionTime; //Tiempo que tarda en transicion
     public float returnTimer; //Tiempo en regresar de 2D a 3D
+    float actualVel;
 
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); //Obtener el componente cámara
-        pos3DCamera = GameObject.FindGameObjectWithTag("3DCamPosition");
-        pos2DCamera = GameObject.FindGameObjectWithTag("2DCamPosition");
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
+        pos3DCamera = GameObject.FindGameObjectWithTag("3DCamPosition"); //EmptyObject para la posicion de la camara en 3D
+        pos2DCamera = GameObject.FindGameObjectWithTag("2DCamPosition"); //EmptyObject para la posicion de la camara en 2D
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>(); //Rigibody del jugador
+        actualVel = player.gameObject.GetComponent<Movement>().movementSpeed;
     }
 
     void LateUpdate()
     {
-        if (InTransition)
-        {
-            player.isKinematic = true; //Volver kinematic al jugador y volver su velocidad 0 para que no se mueva mientras esta girando la cámara
-            player.gameObject.GetComponent<Movement>().movementSpeed = 0;
-        }
-        else
-        {
-            player.isKinematic = false; //Reactivar el movimineto del jugador
-            player.gameObject.GetComponent<Movement>().movementSpeed = 7.8f;
-        }
-
         //Activar cambio si no esta en transición----------------------
         if((Input.GetButtonDown("Right Bumper") || Input.GetKeyDown(KeyCode.R)) && !InTransition)
         {
@@ -49,6 +40,9 @@ public class Camera_Transition : MonoBehaviour
     //Función para el movimiento y rotación de la cámara
     public void Transition()
     {
+        player.isKinematic = true;
+        player.gameObject.GetComponent<Movement>().movementSpeed = 0;
+
         if (perspective) //Cambiar a "2D"
         {
             InTransition = true;
@@ -72,6 +66,10 @@ public class Camera_Transition : MonoBehaviour
     void ChangeBool()
     {
         InTransition = false;
+
+        player.gameObject.GetComponent<Movement>().movementSpeed = actualVel;
+        player.isKinematic = false;
+
         if (!perspective)
         {
             cam.orthographic = true; //Cambiar cámara a proyección ortografica
@@ -80,7 +78,7 @@ public class Camera_Transition : MonoBehaviour
         }
     }
 
-    //Contador para cambiar de 2D a 3D despues de un tiempo determinado (t)
+    //Contador para cambiar de 2D a 3D despues de un tiempo determinado
     IEnumerator Counter()
     {
         yield return new WaitForSeconds(returnTimer);
