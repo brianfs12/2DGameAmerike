@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public float movementSpeed;
 
     [Range(1, 20)]
-    public float movementSpeedLimit;
+    public float movementSpeedLimit = 8;
 
     public float GroundDistance = 0.2f;
     public LayerMask Ground;
