@@ -9,9 +9,12 @@ public class Camera_Transition : MonoBehaviour
     public static bool ortho = false; //Booleano para saber si la camara esta en modo ortografico
     bool perspective = true; //Booleano para saber si la cámara esta en 3D o 2D
     bool InTransition = false; //Booleano para saber si la cámara esta en transición
+    public static bool inverse = false;
+
     Camera cam; //Referencia a la cámara
     GameObject pos3DCamera; //Gameobject que esta en la posicion de la camara en 3D
     GameObject pos2DCamera; //Gameobject que esta en la posicion de la camara en 2D
+    GameObject pos3DInverseCamera;
     Rigidbody player;
 
     public float transitionTime; //Tiempo que tarda en transicion
@@ -23,6 +26,7 @@ public class Camera_Transition : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); //Obtener el componente cámara
         pos3DCamera = GameObject.FindGameObjectWithTag("3DCamPosition"); //EmptyObject para la posicion de la camara en 3D
         pos2DCamera = GameObject.FindGameObjectWithTag("2DCamPosition"); //EmptyObject para la posicion de la camara en 2D
+        pos3DInverseCamera = GameObject.FindGameObjectWithTag("3DInverseCamPosition"); //EmptyObject para la posicion de la camara en 2D
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>(); //Rigibody del jugador
         actualVel = player.gameObject.GetComponent<Movement>().movementSpeed;
     }
@@ -35,6 +39,10 @@ public class Camera_Transition : MonoBehaviour
             Transition();
         }
         //-------------------------------------------------------------
+        if ((Input.GetKeyDown(KeyCode.E)) && !InTransition && perspective)
+        {
+            Transition180();
+        }
     }
 
     //Función para el movimiento y rotación de la cámara
@@ -43,12 +51,29 @@ public class Camera_Transition : MonoBehaviour
         player.isKinematic = true;
         player.gameObject.GetComponent<Movement>().movementSpeed = 0;
 
-        if (perspective) //Cambiar a "2D"
+        if (perspective && !inverse) //Cambiar a "2D"
         {
             InTransition = true;
             perspective = false;
             LeanTween.rotate(gameObject, new Vector3(0.0f, -90.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
             LeanTween.move(cam.gameObject, pos2DCamera.transform.position, transitionTime);
+        }
+        else if (perspective && inverse)
+        {
+            InTransition = true;
+            perspective = false;
+            LeanTween.rotate(gameObject, new Vector3(0.0f, -90.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
+            LeanTween.move(cam.gameObject, pos2DCamera.transform.position, transitionTime);
+        }
+        else if (!perspective && inverse)
+        {
+            ortho = false;
+            InTransition = true;
+            perspective = true;
+            cam.orthographic = false;
+            //StopAllCoroutines();
+            LeanTween.rotate(gameObject, new Vector3(0.0f, 180.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
+            LeanTween.move(cam.gameObject, pos3DInverseCamera.transform.position, transitionTime);
         }
         else //Cambiar a "3D"
         {
@@ -61,6 +86,45 @@ public class Camera_Transition : MonoBehaviour
             LeanTween.move(cam.gameObject, pos3DCamera.transform.position, transitionTime);
         }
     }
+
+    public void Transition180()
+    {
+        player.isKinematic = true;
+        player.gameObject.GetComponent<Movement>().movementSpeed = 0;
+
+        if (!inverse) //Cambiar a "2D"
+        {
+            InTransition = true;
+            LeanTween.rotate(gameObject, new Vector3(0.0f, -90.0f, 0.0f), 0.25f).setOnComplete(aTransition180);
+            LeanTween.move(cam.gameObject, pos2DCamera.transform.position, 0.25f);
+            inverse = true;
+        }
+        else
+        {
+            InTransition = true;
+            LeanTween.rotate(gameObject, new Vector3(0.0f, -90.0f, 0.0f), 0.25f).setOnComplete(aTransition180);
+            LeanTween.move(cam.gameObject, pos2DCamera.transform.position, 0.25f);
+            inverse = false;
+        }
+
+    }
+
+    void aTransition180()
+    {
+        if (inverse)
+        {
+            LeanTween.rotate(gameObject, new Vector3(0.0f, 180.0f, 0.0f), 0.25f).setOnComplete(ChangeBool);
+            LeanTween.move(cam.gameObject, pos3DInverseCamera.transform.position, 0.25f);
+        }
+        else
+        {
+            LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 0.0f), 0.25f).setOnComplete(ChangeBool);
+            LeanTween.move(cam.gameObject, pos3DCamera.transform.position, 0.25f);
+        }
+
+    }
+
+
 
     //Cambiar booleano de transición al terminar el movimiento y poder volver a activarlo
     void ChangeBool()

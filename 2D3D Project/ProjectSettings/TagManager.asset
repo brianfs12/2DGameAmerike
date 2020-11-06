@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - AudioManager
   - GM
+  - 3DInverseCamPosition
   layers:
   - Default
   - TransparentFX
