@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Nato/Level_1.unity
+- path: Assets/PixelArtPlatformerWonderland/ExampleScenes/NINJA_DEMO.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
