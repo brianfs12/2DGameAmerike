@@ -7,7 +7,7 @@ public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
 
-    public float transitionTime = 1f;
+    public float transitionTime = 1.0f;
 
     public void LoadNextLevel()
     {
@@ -17,6 +17,12 @@ public class LevelLoader : MonoBehaviour
     {
         StartCoroutine(LoadLevel(3));
     }
+
+    /*public void LoadOptions()
+    {
+        SceneManager.LoadScene()
+    }*/
+
 
     IEnumerator LoadLevel(int levelIndex)
     {
