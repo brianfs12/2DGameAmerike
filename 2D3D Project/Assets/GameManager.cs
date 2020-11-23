@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     static GameManager instance;
     public Vector3 lastCheckpointPos;
-    public bool isPaused;
+    public static bool isPaused = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -24,21 +25,26 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseGame();
+            if (isPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
-    void PauseGame()
+    public static void Resume()
     {
-        if (isPaused)
-        {
-            Time.timeScale = 1;
-            isPaused = false;
-        }
-        else
-        {
-            Time.timeScale = 0;
-            isPaused = true;
-        }
+        Time.timeScale = 1;
+        isPaused = false;
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0;
+        isPaused = true;
     }
 }

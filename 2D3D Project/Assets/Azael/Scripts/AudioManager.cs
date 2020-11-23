@@ -14,6 +14,7 @@ public enum Sounds
 public class AudioManager : MonoBehaviour
 {
     static AudioManager instance;
+    public float masterVolume;
 
     [Header("SFX")]
     public AudioClip jump;

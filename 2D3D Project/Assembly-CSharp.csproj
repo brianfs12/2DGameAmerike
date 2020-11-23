@@ -109,6 +109,8 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\VenusFlytrap.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spearman.cs" />
+    <Compile Include="Assets\SettingsMenu.cs" />
+    <Compile Include="Assets\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
