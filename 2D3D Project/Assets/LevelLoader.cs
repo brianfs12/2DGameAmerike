@@ -6,8 +6,28 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
+    private GameManager gm;
 
     public float transitionTime = 1.0f;
+
+    private void Start()
+    {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+    }
+
+    public void Continue()
+    {
+        gm.Continue();
+        StartCoroutine(LoadLevel(gm.currentLevel));
+    }
+
+    public void LoadNewGame()
+    {
+        gm.lastCheckpointPos = new Vector3(0.0f, 2.2f, -15.0f);
+        gm.health = 3;
+        gm.currentLevel = 1;
+        StartCoroutine(LoadLevel(1));
+    }
 
     public void LoadNextLevel()
     {
@@ -17,6 +37,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadMainMenu()
     {
         Time.timeScale = 1;
+        GameManager.isPaused = false;
         StartCoroutine(LoadLevel(0));
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     private GameManager gm;
+    public int level;
 
     private void Start()
     {
@@ -15,6 +16,9 @@ public class Checkpoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gm.lastCheckpointPos = transform.position;
+            gm.health = other.gameObject.GetComponent<PlayerCombat>().Health;
+            gm.currentLevel = level;
+            SaveSystem.SaveData(gm);
         }
     }
 }

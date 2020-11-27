@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    GameManager gm;
+
     Vector3 aplastar = new Vector3(0,-1,0);
+    Vector3 initPosition;
     private Rigidbody rigi;
     public Animator animator;
     public Transform attackPoint;
@@ -26,7 +29,10 @@ public class PlayerCombat : MonoBehaviour
     private void Start()
     {
         //audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         rigi = GetComponent<Rigidbody>();
+        Health = gm.health;
+        transform.position = gm.lastCheckpointPos;
     }
 
     void Update()

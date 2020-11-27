@@ -5,11 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static GameManager instance;
-    public Vector3 lastCheckpointPos;
     public static bool isPaused = false;
+
+    public Vector3 lastCheckpointPos;
+    public int health;
+    public int currentLevel;
 
     private void Awake()
     {
+        lastCheckpointPos = new Vector3(0.0f, 2.2f, -15.0f);
+        health = 3;
+        currentLevel = 1;
+
         if (instance == null)
         {
             instance = this;
@@ -23,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {
@@ -46,5 +53,18 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         isPaused = true;
+    }
+
+    public void Continue()
+    {
+        Data data = SaveSystem.LoadData();
+
+        currentLevel = data.level;
+        health = data.health;
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        lastCheckpointPos = position;
     }
 }

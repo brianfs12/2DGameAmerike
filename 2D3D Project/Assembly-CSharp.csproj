@@ -81,6 +81,7 @@
     <Compile Include="Assets\Nato\Drops\Drops.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\DemoMainMenu.cs" />
     <Compile Include="Assets\Scripts\DestroyAfterXTime.cs" />
+    <Compile Include="Assets\SettingsMenu.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\GoblinArcher.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\GoblinGuard.cs" />
     <Compile Include="Assets\Azael\Scripts\Camera_Transition.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Checkpoint.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Ninja.cs" />
     <Compile Include="Assets\Nato\Enemy1Controller.cs" />
+    <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spin.cs" />
@@ -109,8 +111,9 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\VenusFlytrap.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spearman.cs" />
-    <Compile Include="Assets\SettingsMenu.cs" />
-    <Compile Include="Assets\PauseMenu.cs" />
+    <Compile Include="Assets\Azael\Data.cs" />
+    <Compile Include="Assets\Azael\SaveSystem.cs" />
+    <Compile Include="Assets\Azael\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
