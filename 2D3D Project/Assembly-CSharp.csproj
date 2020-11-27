@@ -58,6 +58,7 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Hover.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Demo3D.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\MovingPlatform.cs" />
+    <Compile Include="Assets\Azael\SaveSystem.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\FaceToCamera.cs" />
     <Compile Include="Assets\Azael\Scripts\Camera_Translucid.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spider.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Nato\Enemy3Controller.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\WaterfallSplash.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Explosion.cs" />
+    <Compile Include="Assets\Azael\MainMenu.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\WonderlandDemo.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Arrow.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Chicken.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\SettingsMenu.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\GoblinArcher.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\GoblinGuard.cs" />
+    <Compile Include="Assets\Azael\Data.cs" />
     <Compile Include="Assets\Azael\Scripts\Camera_Transition.cs" />
     <Compile Include="Assets\Brick.cs" />
     <Compile Include="Assets\Nato\ObjectManager.cs" />
@@ -111,9 +114,6 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\VenusFlytrap.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spearman.cs" />
-    <Compile Include="Assets\Azael\Data.cs" />
-    <Compile Include="Assets\Azael\SaveSystem.cs" />
-    <Compile Include="Assets\Azael\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
