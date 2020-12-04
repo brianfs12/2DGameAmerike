@@ -27,7 +27,7 @@ public class Enemy1Controller : MonoBehaviour
     {
         recurrentSpeed = speed;
         enemyBase = this.GetComponent<EnemyBase>();
-        enemyBase.enemyType = EnemyController.EnemyType.ENEMY1;
+        //enemyBase.enemyType = EnemyController.EnemyType.ENEMY1;
         enemyBase.currentHealth = enemyBase.maxHealth;
         playerDetected = false;
         playerLocation = GameObject.FindGameObjectWithTag("Player").transform;

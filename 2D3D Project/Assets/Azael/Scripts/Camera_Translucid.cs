@@ -25,7 +25,7 @@ public class Camera_Translucid : MonoBehaviour
         Debug.DrawRay(transform.position, dir, Color.green);
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, dir, out hit, 5.0f, objects))
+        if(Physics.Raycast(transform.position, dir, out hit, 10.0f, objects))
         {
             translucidObject = hit.collider.gameObject.GetComponent<MeshRenderer>();
             if(!saved)
@@ -33,7 +33,7 @@ public class Camera_Translucid : MonoBehaviour
                 originalColor = translucidObject.material.color;
                 saved = true;
             }
-            opacity = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
+            opacity = new Color(originalColor.r, originalColor.g, originalColor.b, 0.3f);
             translucidObject.material.color = opacity;
         }
         else

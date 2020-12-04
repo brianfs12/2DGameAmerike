@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    ENEMY1, ENEMY2, ENEMY3
+};
+
 public class EnemyController : MonoBehaviour
 {
-    public enum EnemyType
-    {
-        ENEMY1, ENEMY2, ENEMY3
-    };
+
     // Start is called before the first frame update
     void Start()
     {

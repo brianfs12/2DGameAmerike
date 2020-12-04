@@ -8,6 +8,7 @@ public class MoveObjects2D : MonoBehaviour
 
     Vector3 originalPosition;//Para guardar la posicion 3D de objetos estaticos
     float posX;//Para guardar la posicion en X del jugador
+    public GrabPlayer plat;
 
     void Start()
     {
@@ -36,15 +37,33 @@ public class MoveObjects2D : MonoBehaviour
             }
             else
             {
+                if (plat != null)
+                {
+                    if (plat.movingPlat)
+                    {
+                        posX = plat.pos.x;
+                        print(posX);
+                    }
+                }
                 if (gameObject.CompareTag("Player") || gameObject.CompareTag("Enemy"))
                 {
                     transform.position = new Vector3(posX, transform.position.y, transform.position.z); //Mover al jugador
                 }
                 else
                 {
+
                     transform.position = originalPosition;
                 }
+
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlat"))
+        {
+            plat = collision.gameObject.GetComponent<GrabPlayer>();
         }
     }
 }

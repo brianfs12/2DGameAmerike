@@ -84,6 +84,7 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\DemoMainMenu.cs" />
     <Compile Include="Assets\Scripts\DestroyAfterXTime.cs" />
     <Compile Include="Assets\SettingsMenu.cs" />
+    <Compile Include="Assets\PauseGame.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\GoblinArcher.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\GoblinGuard.cs" />
     <Compile Include="Assets\Azael\Data.cs" />
@@ -115,7 +116,10 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\VenusFlytrap.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spearman.cs" />
-    <Compile Include="Assets\PauseGame.cs" />
+    <Compile Include="Assets\RemoveOn2D.cs" />
+    <Compile Include="Assets\Coliseo.cs" />
+    <Compile Include="Assets\GrabPlayer.cs" />
+    <Compile Include="Assets\TriggerWall.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

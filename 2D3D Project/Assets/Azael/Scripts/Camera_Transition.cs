@@ -7,9 +7,10 @@ public class Camera_Transition : MonoBehaviour
     //Mecánica de girar la camara para cambiar de perspectiva, con un contador que cuando termina regresa automaticamente de 2D a 3D y pausa el tiempo mientras se ejecuta la transicion
 
     public static bool ortho = false; //Booleano para saber si la camara esta en modo ortografico
-    bool perspective = true; //Booleano para saber si la cámara esta en 3D o 2D
-    bool InTransition = false; //Booleano para saber si la cámara esta en transición
+    public bool perspective = true; //Booleano para saber si la cámara esta en 3D o 2D
+    public bool InTransition = false; //Booleano para saber si la cámara esta en transición
     public static bool inverse = false;
+    public bool canRotate = true;
 
     Camera cam; //Referencia a la cámara
     GameObject pos3DCamera; //Gameobject que esta en la posicion de la camara en 3D
@@ -34,16 +35,12 @@ public class Camera_Transition : MonoBehaviour
     void LateUpdate()
     {
         //Activar cambio si no esta en transición----------------------
-        if((Input.GetButtonDown("Right Bumper") || Input.GetKeyDown(KeyCode.R)) && !InTransition)
+        if((Input.GetButtonDown("Right Bumper") || Input.GetKeyDown(KeyCode.R)) && !InTransition && canRotate)
         {
             Transition();
         }
-        if ((Input.GetButtonDown("Left Bumper") || Input.GetKeyDown(KeyCode.Y)) && !InTransition)
-        {
-            TransitionIzq();
-        }
         //-------------------------------------------------------------
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Button Y")) && !InTransition && perspective)
+        if ((Input.GetKeyDown(KeyCode.E)) && !InTransition && perspective)
         {
             Transition180();
         }
@@ -89,11 +86,6 @@ public class Camera_Transition : MonoBehaviour
             LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
             LeanTween.move(cam.gameObject, pos3DCamera.transform.position, transitionTime);
         }
-    }
-
-    public void TransitionIzq()
-    {
-
     }
 
     public void Transition180()

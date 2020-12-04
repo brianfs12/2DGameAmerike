@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    GameManager gm;
-
     Vector3 aplastar = new Vector3(0,-1,0);
-    Vector3 initPosition;
     private Rigidbody rigi;
     public Animator animator;
     public Transform attackPoint;
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public int attackDamage = 1;
-    public EnemyController controller;
+    //public EnemyController controller;
 
     [Header("Estadisticas")]
     public int Health;
@@ -30,10 +27,7 @@ public class PlayerCombat : MonoBehaviour
     {
         SettingsMenu.mainMenu = false;
         //audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         rigi = GetComponent<Rigidbody>();
-        Health = gm.health;
-        transform.position = gm.lastCheckpointPos;
     }
 
     void Update()
@@ -49,7 +43,8 @@ public class PlayerCombat : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && !invulnerable)
         {
-            if(Physics.OverlapSphere(aplastar + transform.position, 0.2f, enemyLayers).Length > 0)
+
+            if (Physics.OverlapSphere(aplastar + transform.position, 0.2f, enemyLayers).Length > 0)
             {
                 rigi.AddRelativeForce(Vector3.up * 15.0f, ForceMode.Impulse);
                 collision.gameObject.GetComponent<EnemyBase>().TakeDamage(1);

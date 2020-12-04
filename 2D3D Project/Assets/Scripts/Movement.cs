@@ -55,14 +55,14 @@ public class Movement : MonoBehaviour
         {
             Jump();
         }
-        if((Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Button X")) && (movementInput.x != 0.0f || movementInput.z != 0.0f))
+        if((Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Button B")) && (movementInput.x != 0.0f || movementInput.z != 0.0f))
         {
             if(movementSpeed < movementSpeedLimit)
             {
                 movementSpeed += 0.1f;
             }
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetButtonUp("Button X"))
+        if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetButtonUp("Button B"))
         {
             movementSpeed = movementSpeedSaved;
         }

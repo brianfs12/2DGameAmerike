@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
     public int currentHealth;
     public int damageOfEnemy;
     public Rigidbody rigi;
-    public EnemyController.EnemyType enemyType;
+    public EnemyType enemyType;
 
     public void Start()
     {

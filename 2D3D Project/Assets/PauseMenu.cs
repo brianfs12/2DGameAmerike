@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(false);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if(Input.GetButtonDown("Start Button") || Input.GetKeyDown(KeyCode.Escape))
         {

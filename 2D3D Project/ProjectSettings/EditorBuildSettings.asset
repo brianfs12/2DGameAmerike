@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Azael/MainMenu.unity
     guid: 035d16225b3365e41ae4f0ccffdd8d9e
   - enabled: 1
-    path: Assets/Azael/Testing.unity
-    guid: b236045712fccd949b108d71af986c89
+    path: Assets/Nato/Level_1.unity
+    guid: 3c6813c07d60fb0468f30c1a99a90ffd
   - enabled: 1
     path: Assets/Azael/Options.unity
     guid: 9f7bf584daf82264bae76a1f1d3b6b7e
   - enabled: 0
-    path: Assets/Nato/Level_1.unity
-    guid: 3c6813c07d60fb0468f30c1a99a90ffd
+    path: Assets/Azael/Testing.unity
+    guid: b236045712fccd949b108d71af986c89
   m_configObjects: {}
