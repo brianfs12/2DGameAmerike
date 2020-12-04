@@ -102,6 +102,7 @@
     <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Slime.cs" />
     <Compile Include="Assets\Scripts\BetterJumping.cs" />
+    <Compile Include="Assets\Azael\MenuUI.cs" />
     <Compile Include="Assets\Azael\Scripts\GroundColliders.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\LavaBall.cs" />
     <Compile Include="Assets\PlayerCombat.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\VenusFlytrap.cs" />
     <Compile Include="Assets\Azael\LeanTween\LTDescr.cs" />
     <Compile Include="Assets\PixelArtPlatformerWonderland\Scripts\Spearman.cs" />
+    <Compile Include="Assets\PauseGame.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

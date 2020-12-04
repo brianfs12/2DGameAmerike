@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject PauseMenuUI;
+    public GameObject options;
 
     private void Start()
     {
@@ -13,18 +15,21 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.isPaused)
+        if(Input.GetButtonDown("Start Button") || Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseMenuUI.SetActive(true);
-        }
-        else
-        {
-            PauseMenuUI.SetActive(false);
+            PauseMenuUI.SetActive(GameManager.isPaused);
         }
     }
 
     public void Resume()
     {
         GameManager.Resume();
+        PauseMenuUI.SetActive(GameManager.isPaused);
+    }
+
+    public void OpenOptions()
+    {
+        PauseMenuUI.SetActive(false);
+        options.SetActive(true);
     }
 }

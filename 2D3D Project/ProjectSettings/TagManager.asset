@@ -10,6 +10,7 @@ TagManager:
   - AudioManager
   - GM
   - 3DInverseCamPosition
+  - LevelLoader
   layers:
   - Default
   - TransparentFX

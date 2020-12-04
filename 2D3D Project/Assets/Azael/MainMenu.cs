@@ -10,8 +10,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-
+        SettingsMenu.mainMenu = true;
         continue_Btn.SetActive(SaveSystem.CheckFileExist());
-
     }
 }

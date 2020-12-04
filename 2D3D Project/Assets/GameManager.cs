@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start Button"))
         {
             if (isPaused)
             {

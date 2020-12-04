@@ -38,8 +38,12 @@ public class Camera_Transition : MonoBehaviour
         {
             Transition();
         }
+        if ((Input.GetButtonDown("Left Bumper") || Input.GetKeyDown(KeyCode.Y)) && !InTransition)
+        {
+            TransitionIzq();
+        }
         //-------------------------------------------------------------
-        if ((Input.GetKeyDown(KeyCode.E)) && !InTransition && perspective)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Button Y")) && !InTransition && perspective)
         {
             Transition180();
         }
@@ -85,6 +89,11 @@ public class Camera_Transition : MonoBehaviour
             LeanTween.rotate(gameObject, new Vector3(0.0f, 0.0f, 0.0f), transitionTime).setOnComplete(ChangeBool);
             LeanTween.move(cam.gameObject, pos3DCamera.transform.position, transitionTime);
         }
+    }
+
+    public void TransitionIzq()
+    {
+
     }
 
     public void Transition180()

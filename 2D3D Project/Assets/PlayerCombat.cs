@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
+        SettingsMenu.mainMenu = false;
         //audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
         rigi = GetComponent<Rigidbody>();
